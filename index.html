@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hoe de prognose hogerejaars werkt</title>
+  <style>
+    /* Match the video's background so the edges of the Tableau object are invisible.
+       Change --ground if you re-export the film in other colours. */
+    :root { --ground: #271911; }
+    html, body { margin: 0; height: 100%; background: var(--ground); }
+    body { display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    video { width: 100%; height: 100%; object-fit: contain; background: var(--ground); outline: none; }
+    video:focus-visible { outline: 3px solid #efb23b; outline-offset: -3px; }
+  </style>
+</head>
+<body>
+  <!-- Put the MP4 exported from the film next to this file and keep its name here. -->
+  <video id="film" src="prognose-hogerejaars.mp4" controls playsinline preload="metadata"
+         aria-label="Animatie: hoe de prognose hogerejaars werkt"></video>
+
+  <script>
+    // Add ?autoplay to the URL in the Tableau Web Page object to start the film
+    // muted and looping (browsers only allow autoplay without sound).
+    if (new URLSearchParams(location.search).has('autoplay')) {
+      const v = document.getElementById('film');
+      v.muted = true;
+      v.loop = true;
+      v.autoplay = true;
+      v.play().catch(function () {});
+    }
+  </script>
+</body>
+</html>
